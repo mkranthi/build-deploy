@@ -8,5 +8,10 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/mkranthi/build-deploy.git'
             }
         }
+        stage ('Build') {  
+               steps {
+                   sh kubectl crate -f ("/var/lib/jenkins/workspace/build-deploy:${env.BUILD_NUMBER}")
+               }  
+           } 
     }   
 }
