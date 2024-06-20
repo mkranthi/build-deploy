@@ -14,5 +14,11 @@ pipeline {
                 sh "kubectl apply -f /var/lib/jenkins/workspace/build-deploy/namespace.yaml"
             }  
         }
+        stage ('create serviceaccount') {  
+            steps {
+                // Execute the kubectl command to apply the namespace.yaml
+                sh "kubectl apply -f /var/lib/jenkins/workspace/build-deploy/serviceaccount.yaml"
+            }  
+        }
     }   
 }
