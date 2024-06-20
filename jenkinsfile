@@ -10,7 +10,7 @@ pipeline {
         }
         stage ('Build') {  
                steps {
-                   sh "kubectl crate -f ("/var/lib/jenkins/workspace/build-deploy:${env.BUILD_NUMBER}")"
+                   sh "kubectl crate -f ("/var/lib/jenkins/workspace/build-deploy/namespace.yaml")"
                }  
            } 
     }   
