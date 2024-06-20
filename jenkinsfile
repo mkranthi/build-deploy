@@ -9,9 +9,10 @@ pipeline {
             }
         }
         stage ('Build') {  
-               steps {
-                   sh "kubectl apply -f "/var/lib/jenkins/workspace/build-deploy/namespace.yaml"
-               }  
-           } 
+            steps {
+                // Execute the kubectl command to apply the namespace.yaml
+                sh "kubectl apply -f /var/lib/jenkins/workspace/build-deploy/namespace.yaml"
+            }  
+        }
     }   
 }
