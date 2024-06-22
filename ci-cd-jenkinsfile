@@ -1,0 +1,24 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                // Checkout the repository
+                git branch: 'main', url: 'https://github.com/mkranthi/build-deploy.git'
+            }
+        }
+        stage ('Build') {  
+            steps {
+                // Execute the kubectl command to apply the namespace.yaml
+                sh "kubectl apply -f /var/lib/jenkins/workspace/build-deploy/namespace.yaml"
+            }  
+        }
+        stage ('create serviceaccount') {  
+            steps {
+                // Execute the kubectl command to apply the namespace.yaml
+                sh "kubectl apply -f /var/lib/jenkins/workspace/build-deploy/serviceaccount.yaml"
+            }  
+        }
+    }   
+}
